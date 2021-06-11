@@ -11,10 +11,8 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
-    container:
-      image: docker
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
