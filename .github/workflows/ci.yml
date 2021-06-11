@@ -12,7 +12,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
     container:
       image: docker
     steps:
@@ -21,5 +20,7 @@ jobs:
 
       - name: Build
         run: |
+          pwd
+          ls -la
           DOCKER_USER=${{ secrets.DOCKER_HUB_USERNAME }} DOCKER_PASSWORD=${{ secrets.DOCKER_HUB_TOKEN }} \
             DOCKER_IMAGE_PREFIX=${{ secrets.DOCKER_IMAGE_PREFIX }} ./build.sh
