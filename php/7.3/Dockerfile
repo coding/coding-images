@@ -1,9 +1,6 @@
 FROM php:7.3
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer config -g repo.packagist composer https://mirrors.cloud.tencent.com/composer/
-
-RUN find /etc/apt/ -name '*.list' -print0 | xargs -0 sed -i 's/[a-z]\+.debian.org/mirrors.cloud.tencent.com/g'
 RUN apt-get update \
     && apt-get install -y \
     cron \
@@ -25,3 +22,6 @@ RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini \
 RUN apt-get clean \
     && apt-get autoclean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN composer config -g repo.packagist composer https://mirrors.cloud.tencent.com/composer/
+RUN find /etc/apt/ -name '*.list' -print0 | xargs -0 sed -i 's/[a-z]\+.debian.org/mirrors.cloud.tencent.com/g'
