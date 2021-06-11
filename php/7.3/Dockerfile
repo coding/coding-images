@@ -1,6 +1,6 @@
 FROM php:7.3
 
-RUN curl -sS https://getcomposer.org.mirrors.china-speed.org.cn/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer config -g repo.packagist composer https://mirrors.cloud.tencent.com/composer/
 
 RUN find /etc/apt/ -name '*.list' -print0 | xargs -0 sed -i 's/[a-z]\+.debian.org/mirrors.cloud.tencent.com/g'
