@@ -10,14 +10,18 @@ on:
     - cron: '6 6 * * *'
 
 jobs:
-  docker:
-    if: ${{ github.ref == 'refs/heads/main' }}
+  ci:
     runs-on: ubuntu-latest
+    container: hadolint/hadolint:latest-debian
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build
+      - name: Lint
+        run: hadolint ./**/Dockerfile
+
+      - name: Build Docker
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           DOCKER_USER=${{ secrets.DOCKER_HUB_USERNAME }} DOCKER_PASSWORD=${{ secrets.DOCKER_HUB_TOKEN }} \
             DOCKER_IMAGE_PREFIX=${{ secrets.DOCKER_IMAGE_PREFIX }} ./build.sh
