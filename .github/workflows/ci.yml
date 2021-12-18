@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Lint
-        run: hadolint ./**/Dockerfile
+        run: hadolint ./**/**/Dockerfile
 
       - name: Build Docker
         if: ${{ github.ref == 'refs/heads/main' }}
