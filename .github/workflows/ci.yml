@@ -10,7 +10,7 @@ on:
     - cron: '6 6 * * *'
 
 jobs:
-  ci:
+  lint:
     runs-on: ubuntu-latest
     container: hadolint/hadolint:latest-debian
     steps:
@@ -19,6 +19,12 @@ jobs:
 
       - name: Lint
         run: hadolint ./**/**/Dockerfile
+
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Build Docker
         if: ${{ github.ref == 'refs/heads/main' }}
