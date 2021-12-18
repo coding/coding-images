@@ -10,7 +10,9 @@ RUN apt-get update \
     git \
     icu-devtools \
     jq \
-    libfreetype6-dev libicu-dev libjpeg62-turbo-dev libpng-dev librsvg2-bin libsasl2-dev libssl-dev libwebp-dev libxpm-dev libzip-dev \
+    libfreetype6-dev libicu-dev libjpeg62-turbo-dev libpng-dev libpq-dev \
+    librsvg2-bin libsasl2-dev libssl-dev libwebp-dev \
+    libxpm-dev libzip-dev libzstd-dev \
     unzip \
     vim \
     zlib1g-dev \
