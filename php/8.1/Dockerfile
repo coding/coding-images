@@ -13,6 +13,7 @@ RUN apt-get update \
     libfreetype6-dev libicu-dev libjpeg62-turbo-dev libpng-dev libpq-dev \
     librsvg2-bin libsasl2-dev libssl-dev libwebp-dev \
     libxpm-dev libzip-dev libzstd-dev \
+    ssh-client \
     unzip \
     vim \
     zlib1g-dev \
